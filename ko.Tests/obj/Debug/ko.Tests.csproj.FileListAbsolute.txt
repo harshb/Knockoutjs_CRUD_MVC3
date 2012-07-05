@@ -1,0 +1,9 @@
+C:\ClientSideComparison\KnockoutCrud\ko.Tests\obj\Debug\ResolveAssemblyReference.cache
+C:\ClientSideComparison\KnockoutCrud\ko.Tests\bin\Debug\ko.Tests.dll
+C:\ClientSideComparison\KnockoutCrud\ko.Tests\bin\Debug\ko.Tests.pdb
+C:\ClientSideComparison\KnockoutCrud\ko.Tests\bin\Debug\MI.WebUI.dll
+C:\ClientSideComparison\KnockoutCrud\ko.Tests\bin\Debug\nunit.framework.dll
+C:\ClientSideComparison\KnockoutCrud\ko.Tests\bin\Debug\MI.WebUI.pdb
+C:\ClientSideComparison\KnockoutCrud\ko.Tests\bin\Debug\nunit.framework.xml
+C:\ClientSideComparison\KnockoutCrud\ko.Tests\obj\Debug\ko.Tests.dll
+C:\ClientSideComparison\KnockoutCrud\ko.Tests\obj\Debug\ko.Tests.pdb

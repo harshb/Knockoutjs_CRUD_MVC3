@@ -1,0 +1,124 @@
+﻿<script type="text/JavaScript">
+    function phoneModel() {
+        var self = this;
+        self.phones = ko.observable();
+        self.phone = ko.observable();
+        self.phoneName = ko.observable("test");
+
+
+
+        //--get phones------
+        self.getphones = function () {
+
+
+            // $.get('/Home/GetPhones',  self.phones);
+
+            //hack to get i.e to work :pass in ?breakcache='+Math.random() 
+            //as querystring --otherwise i,e responds with 304:nothings changed
+
+            $.get('/Home/GetPhones' +'?breakcache='+Math.random(), function (data) {
+              
+                self.phones(data);
+            });
+
+
+        };
+
+
+        //---get phones end---
+
+        //--details start
+
+        self.getdetails = function (_phone) {
+
+         
+            self.phone(_phone);
+        };
+
+        //--details end
+
+        //---save------
+
+        self.save = function (_phone) {
+
+            var jsonData = ko.toJSON(_phone);
+
+
+            $.post('/Home/SavePhone', jsonData, function (data) {
+
+                self.phones([]);
+                $.get('/Home/GetPhones',  self.phones);
+            });
+        };
+
+        //---save end
+
+
+        //---save------
+
+        self.newrecord = function () {
+
+            var newphone = {
+                id: self.phones().length ,
+                name: "",
+                snippet: ""
+            };
+
+
+            self.phone(newphone);
+        };
+
+        //---save end
+
+        //init
+
+        self.getphones();
+    };
+
+</script>
+
+
+</script>
+
+<div class="row">
+    <div class="span6 offset2 ">
+
+        
+       <table>
+    
+        <tbody data-bind="foreach: phones">
+             <tr>
+                <td> <a href="" data-bind="text: name,  click: $root.getdetails"></a></td>
+                </tr>
+                <tr>
+                <td data-bind="text: snippet"></td>
+                
+            </tr>     
+        </tbody>
+       </table>
+      
+    </div>
+
+    
+	<div class="span6">
+		
+        <h4>Details</h4>
+         <button data-bind="click: newrecord">New</button>
+        <div  data-bind="with: phone">
+       
+            <h3 data-bind="text: name"></h3>
+           <p>Phone name: <input data-bind="value: name" /></p>
+            <p>Snippet: <input data-bind="value: snippet" /></p>
+           <button data-bind="click: $root.save">Save</button>
+        </div>
+         
+      
+    </div>
+			
+
+    
+</div>
+
+<script>
+    ko.applyBindings(new phoneModel());
+</script>
